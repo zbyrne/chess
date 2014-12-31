@@ -54,10 +54,11 @@ class Piece(object):
             att_pos = self._add_move(attack)
             if not position_on_board(att_pos):
                 continue
+            if any(self._blocks_move(p, att_pos) for p in pieces):
+                continue
             for piece in pieces:
                 if (piece.position == att_pos and
-                    piece.colour != self._colour and
-                    not any(self._blocks_move(p, att_pos) for p in pieces)):
+                    piece.colour != self._colour):
                     attacks.append(att_pos)
         return attacks
 
