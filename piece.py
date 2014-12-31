@@ -41,12 +41,11 @@ class Piece(object):
             end_pos = self._add_move(move)
             if not position_on_board(end_pos):
                 continue
-            if not pieces:
-                moves.append(end_pos)
-            for piece in pieces:
-                if (piece.position != end_pos and
-                    not self._blocks_move(piece, end_pos)):
-                    moves.append(end_pos)
+            if any(self._blocks_move(p, end_pos) for p in pieces):
+                continue
+            if any(p.position == end_pos for p in pieces):
+                continue
+            moves.append(end_pos)
         return moves
 
     def list_attacks(self, pieces):
