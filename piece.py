@@ -1,6 +1,6 @@
 class Colour(object):
-    WHITE = 'white'
-    BLACK = 'black'
+    WHITE = 0
+    BLACK = 1
 
 
 def position_on_board(position):
