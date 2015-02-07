@@ -9,6 +9,8 @@ class PawnTestSuite(TestCase):
         pawn1 = Pawn(Colour.WHITE, (0, 0))
         pawn2 = Pawn(Colour.BLACK, (0, 1))
         pawn3 = Pawn(Colour.BLACK, (0, 0))
+        self.assertEquals(pawn1.list_moves([]), [(0, 1), (0, 2)])
+        pawn1.position = (0, 0)
         self.assertEquals(pawn1.list_moves([]), [(0, 1)])
         self.assertEquals(pawn1.list_moves([pawn2]), [])
         self.assertEquals(pawn3.list_moves([]), [])

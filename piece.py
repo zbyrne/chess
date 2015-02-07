@@ -16,6 +16,7 @@ class Piece(object):
         if colour not in (Colour.WHITE, Colour.BLACK):
             raise ValueError, 'What game are you playing?'
         self._colour = colour
+        self._moved = False
 
     @property
     def _moves(self):
@@ -36,6 +37,7 @@ class Piece(object):
         if not position_on_board(value):
             raise ValueError, 'position must be on the board'
         self._position = value
+        self._moved = True
 
     @property
     def colour(self):
@@ -96,7 +98,9 @@ class Piece(object):
         return piece.position in line
 
     def clone(self):
-        return type(self)(self.colour, self._position)
+        cln = type(self)(self.colour, self._position)
+        cln._moved = self._moved
+        return cln
 
     def __repr__(self):
         if self.colour == Colour.WHITE:

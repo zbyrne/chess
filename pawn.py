@@ -7,6 +7,8 @@ class Pawn(Piece):
 
     @property
     def _moves(self):
+        if not self._moved:
+            return [(0, 1), (0, 2)]
         return [(0, 1)]
 
     @property

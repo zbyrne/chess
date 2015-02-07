@@ -9,6 +9,8 @@ class GameTreeTestSuite(TestCase):
 
     def test_game_progression(self):
         board = (Pawn(Colour.WHITE, (0, 0)), Pawn(Colour.BLACK, (7, 7)))
+        for p in board:
+            p._moved = True
         gt = GameTree(board, Colour.WHITE)
         gt.generate(2)
         self.assertEquals(len(gt.children), 1)
