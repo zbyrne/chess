@@ -91,3 +91,10 @@ class Piece(object):
 
     def clone(self):
         return type(self)(self.colour, self._position)
+
+    def __repr__(self):
+        if self.colour == Colour.WHITE:
+            col = "White"
+        else:
+            col = "Black"
+        return '%s %s at %s' % (col, type(self).__name__, self._position)
