@@ -29,3 +29,15 @@ class PieceTestSuite(TestCase):
     def test_piece_attacks(self):
         piece = Piece(Colour.WHITE)
         self.assertEqual(piece.list_attacks([]), [])
+
+    def test_piece_clone(self):
+        piece = Piece(Colour.WHITE, (3, 3))
+        clone = piece.clone()
+        self.assertEquals(piece.colour, clone.colour)
+        self.assertEquals(piece.position, clone.position)
+
+    def test_piece_subclass_clone(self):
+        class Gen(Piece): pass
+        piece = Gen(Colour.WHITE)
+        clone = piece.clone()
+        self.assertTrue(isinstance(clone, Gen))

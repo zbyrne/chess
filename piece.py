@@ -88,3 +88,6 @@ class Piece(object):
             line.append(point)
             point = (point[0] + xstep, point[1] + ystep)
         return piece.position in line
+
+    def clone(self):
+        return type(self)(self.colour, self._position)
