@@ -16,8 +16,14 @@ class Piece(object):
         if colour not in (Colour.WHITE, Colour.BLACK):
             raise ValueError, 'What game are you playing?'
         self._colour = colour
-        self._moves = []
-        self._attacks = []
+
+    @property
+    def _moves(self):
+        return []
+
+    @property
+    def _attacks(self):
+        return []
 
     @property
     def position(self):
